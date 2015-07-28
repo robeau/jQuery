@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkbox</title>
+    <style>
+        .bg-blue{
+            background-color: #3187ff;
+            color: white;
+        }
+    </style>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+        $(function () {
+            $('input').click(function () {
+                $('div').toggleClass('bg-blue');
+            })
+        })
+    </script>
+</head>
+<body>
+    <input type="checkbox" />
+    <div>Data</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+        $(function(){
+            $('ul').on('click', 'li', function () {
+                console.log($(this).html());
+            })
+        })
+
+        $.ajax({
+            method: 'get',
+            url: 'https://api.github.com/search/repositories?q=angular',
+            dataType: 'json',
+            success: function (x,y,z) {
+                console.log('Successfully completed call');
+                console.log(x,y,z);
+            },
+            error: function (x,y,z) {
+                console.log('Something went wrong ... ');
+                console.log(x,y,z);
+            },
+            complete: function () {
+                console.log('Call is complete.');
+            }
+        })
+    </script>
+</head>
+<body>
+    <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ul>
+</body>
+</html>

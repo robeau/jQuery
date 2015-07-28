@@ -39,10 +39,7 @@
 
         $(function () {
             $('div').addClass(function (index) {
-                if (index%2 === 0){
-                    return 'even';
-                }
-                else return 'odd';
+                return index%2 === 0 ? 'even' : 'odd';
             });
         });
 
