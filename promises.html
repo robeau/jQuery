@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+
+        $(function () {
+            console.log('DOMContentLoaded event has fired ... ');
+
+            function createPromise(term) {
+                return new Promise(function (resolve, reject) {
+                    $.getJSON('https://api.github.com/search/repositories?q=' + term, function (data) {
+                        resolve(data);
+                        // console.log(data);
+                    });
+                });
+            }
+
+            /*var promise = createPromise('nodejs');
+             promise.then(function (data) {
+             console.log(data);
+             });
+             */
+            var terms = ['nodejs', 'iot', 'durandal'];
+/*
+            Promise.all(terms.map(createPromise)).then(function (data) {
+                console.log(data);
+            });
+            Promise.all([true, createPromise('nodejs')]).then(function(data){
+               console.log(data);
+            });
+ */
+
+            var arr = [];
+            terms.reduce(function(promise, term){
+                return promise.then(function (data) {
+                    arr.push(data);
+                    return createPromise(term);
+                });
+            }, Promise.resolve('testing')).then(function(data){
+                arr.push(data);
+                console.log(arr);
+            });
+
+            //write a promise, and when the promise resolves, pass the data into the next promise
+
+
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
