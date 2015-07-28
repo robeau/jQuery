@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        .odd {
+            background-color: red;
+        }
+        .even {
+            background-color: green;
+        }
+
+    </style>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+
+        // 1. use a function as an input
+        $(function () {
+            // runs the function once the DOMContentLoaded is fired ..
+            // 2. Provide a selector - CSS or a jQuery selector
+            $('div').html('initial div elements'); //
+            $('div').html(function (index, oldHTMLString) {
+                console.log(index, oldHTMLString);
+                return oldHTMLString + ': ' + index;
+            });
+        });
+
+
+        $(function () {
+            // 3. provide a tag or starting and closing tags along with any attributes
+            $('<div class="mydiv">This is the first div .... </div>').addClass('onemoreclass').appendTo(document.body);
+
+            // 4. A DOM element as an input
+            $(document.body).addClass('body-class');
+        });
+
+
+        $(function () {
+            $('div').addClass(function (index) {
+                if (index%2 === 0){
+                    return 'even';
+                }
+                else return 'odd';
+            });
+        });
+
+
+
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>
